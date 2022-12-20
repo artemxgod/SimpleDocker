@@ -1,0 +1,17 @@
+services:
+  server:
+    tty: true
+    image: part5:new
+    build: ./dockle
+    volumes:
+      - type: bind
+        source: $PWD/dockle/nginx/nginx.conf
+        target: /etc/nginx/nginx/nginx.conf
+    
+  client:
+    tty: true
+    image: part5:new
+    build: ./compose
+    ports:
+      - "80:8080"
+    
